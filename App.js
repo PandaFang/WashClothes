@@ -1,49 +1,24 @@
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import TabNavigtor from './src/component/TabNavigator'
+import DetailPage from './src/page/DetailPage'
+
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
+ * 总的是个 栈的导航
+ * 内部嵌入tab 导航 和 不在 tab 中的内容
  */
+const AppNavigator = createStackNavigator({
+  Tab: {
+    screen: TabNavigtor
+  },
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+  Detail: {
+    screen:DetailPage,
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+}, 
+{
+  defaultNavigationOptions: ({ navigation }) => ({
+    header:null // 不显示 标题栏
+  })
 });
+
+export default createAppContainer(AppNavigator);
