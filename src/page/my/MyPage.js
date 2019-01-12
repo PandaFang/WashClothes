@@ -6,12 +6,22 @@ import {
     Text,
     ImageBackground,
     Image,
+    TouchableHighlight,
+    Linking,
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const { width, height } = Dimensions.get('window')
+const { width, height } = Dimensions.get('window');
+const tel = 'tel:110100';
 // 个人中心
 class MyPage extends Component {
+    _contact() {
+        if (Linking.canOpenURL(tel)) {
+            Linking.openURL(tel);
+        } else {
+            console.log('没有发现 电话应用');
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -83,10 +93,12 @@ class MyPage extends Component {
                 </View>
 
                 {/* 客服电话 */}
-                <View style={styles.call}>
-                    <Icon name="ios-call" size={25} style={{ color: '#7dd5d5' }} />
-                    <Text>客服电话</Text>
-                </View>
+                <TouchableHighlight onPress={ this._contact }>
+                    <View style={styles.call}>
+                        <Icon name="ios-call" size={25} style={{ color: '#7dd5d5' }} />
+                        <Text>客服电话</Text>
+                    </View>
+                </TouchableHighlight>
                 {/* 黑条 无其他作用 */}
                 <View style={{height:10, backgroundColor:'#00000006'}}></View>
 
@@ -149,7 +161,8 @@ const styles = StyleSheet.create({
     },
 
     othersBox: {
-        padding: 10,
+        paddingLeft: 10,
+        paddingRight:10,
     },
 
     othersItem: {
@@ -166,8 +179,8 @@ const styles = StyleSheet.create({
 
     call: {
         flexDirection: 'row',
+        height:40,
         backgroundColor: 'white',
-        height: 40,
         justifyContent: 'center',
         alignItems: 'center',
         textAlign:'center',
