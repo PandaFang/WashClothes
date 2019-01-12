@@ -2,9 +2,10 @@ import React from 'react'
 import {StyleSheet} from 'react-native'
 import {createBottomTabNavigator} from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import HomePage from '../page/home/HomePage'
-import MyPage from '../page/my/MyPage'
-import OrderPage from '../page/order/OrderPage'
+import HomePage from '../page/home/HomePage';
+import MyPage from '../page/my/MyPage';
+import OrderPage from '../page/order/OrderPage';
+import ShopCartPage from '../page/ShopCartPage'
   
 const tabNavigator = createBottomTabNavigator(
   {
@@ -25,6 +26,12 @@ const tabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel:'我的'
       }
+    },
+    ShopCart: {
+      screen:ShopCartPage,
+      navigationOptions: {
+        tabBarLabel:'购物车'
+      }
     }
   },
   {
@@ -39,6 +46,9 @@ const tabNavigator = createBottomTabNavigator(
           iconName = 'person'
         } else if (routeName === 'Order') {
           iconName = 'receipt'
+        }
+        else if (routeName === 'ShopCart') {
+          iconName = 'add-shopping-cart'
         }
         // if (routeName === 'Home') {
         //   iconName = `ios-information-circle${focused ? '' : '-outline'}`;
