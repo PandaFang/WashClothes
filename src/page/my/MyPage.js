@@ -6,7 +6,7 @@ import {
     Text,
     ImageBackground,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     Linking,
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -26,13 +26,15 @@ class MyPage extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.top} source={require('../../assets/my-center-bg.jpg')}>
-                    <View style={styles.inTopLeft}>
+                    <TouchableOpacity style={styles.inTopLeft} onPress={()=> this.props.navigation.navigate('LoginPage')}>
+                    <View style={styles.avatarAndSign}>
                         <Image style={styles.avatar} source={require('../../assets/avatar.jpg')} />
                         <View>
                             <Text>立即登录</Text>
                             <Text>让生活更自在</Text>
                         </View>
                     </View>
+                    </TouchableOpacity>
                     <Text style={styles.inTopRight}>充值</Text>
                 </ImageBackground>
 
@@ -93,12 +95,12 @@ class MyPage extends Component {
                 </View>
 
                 {/* 客服电话 */}
-                <TouchableHighlight onPress={ this._contact }>
+                <TouchableOpacity onPress={ this._contact }>
                     <View style={styles.call}>
                         <Icon name="ios-call" size={25} style={{ color: '#7dd5d5' }} />
                         <Text>客服电话</Text>
                     </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
                 {/* 黑条 无其他作用 */}
                 <View style={{height:10, backgroundColor:'#00000006'}}></View>
 
@@ -121,6 +123,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 20,
         top: 40,
+    },
+
+    avatarAndSign:{
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
