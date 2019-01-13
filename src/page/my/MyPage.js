@@ -101,9 +101,10 @@ class MyPage extends Component {
                         <Text>客服电话</Text>
                     </View>
                 </TouchableOpacity>
-                {/* 黑条 无其他作用 */}
-                <View style={{height:10, backgroundColor:'#00000006'}}></View>
-
+                {/* 鸣谢区域 */}
+                <View style={{height:60, justifyContent:'center', alignItems:'center', borderTopColor:'#00000006', borderTopWidth:10}}>
+                    <Text onPress={()=> this.props.navigation.navigate('WebPage')} style={{color:'blue', textDecorationLine:'underline'}}>鸣谢:Rect Native</Text>
+                </View>
             </View>
         )
     }
