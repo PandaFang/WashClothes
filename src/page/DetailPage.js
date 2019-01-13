@@ -1,15 +1,25 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, {Component} from 'react'
+import {
+    View,
+    Text,
+    StyleSheet,
+} from 'react-native'
 
-class DetailPage extends Component {
+export default class DetailPage extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>Detail Page</Text>
             </View>
 
-        )
+        );
     }
 }
 
-export default DetailPage;
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
