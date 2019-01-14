@@ -5,12 +5,19 @@ React Native 练习
 
 ## 涵盖内容
 本项目主要练习了以下内容 
+
 flexbox 布局 View Image Text FlatList 下拉刷新， WebView 等基础
+
 react-navigation 路由导航 包括 stack 和 tab 导航
+
 react-native-vector-icon 图标字体
+
 react-native-swipe-list-view 侧滑删除
+
 如何组织代码
+
 如何封装网络请求
+
 如何使用在子目录中使用 index.js 文件
 
 ## 架构图
