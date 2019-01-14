@@ -9,7 +9,8 @@ import {
     AsyncStorage
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
-import appService from '../../api/AppService'
+// import appService from '../../api/AppService'
+import {api} from "../../api";
 
 class LoginPage extends  Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class LoginPage extends  Component {
         }
         this.setState({isSending:true});
 
-        appService.sendCode().then((resp) => console.log(resp)).catch((error) => console.log('发生异常'));
+        api.sendCode().then((resp) => console.log(resp)).catch((error) => console.log('发生异常'));
 
         let time = 3;
         this.timer = setInterval(() => {
