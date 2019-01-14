@@ -22,7 +22,7 @@ class TitleBar extends Component {
 }
 
 TitleBar.propTypes = {
-    title:PropTypes.string.isRequired,
+    title:PropTypes.string,
     goBack: PropTypes.func.isRequired,
 };
 
