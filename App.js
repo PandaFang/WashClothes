@@ -1,3 +1,4 @@
+import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import TabNavigtor from './src/component/TabNavigator'
 import DetailPage from './src/page/DetailPage'
@@ -10,7 +11,16 @@ import WebPage from './src/page/WebViewPage'
  */
 const AppNavigator = createStackNavigator({
     Tab: {
-        screen: TabNavigtor
+        screen: TabNavigtor,
+        navigationOptions:{
+            header:null, // 所有tab 页不显示标题栏
+
+            /** 也可以 重写 header， 比如
+            header: (<View><Text>这是标题栏</Text></View>)
+            或者 如果 元素内容太多，可以 写一个class extends Component， 抽离到独立js文件中 再import 进来
+             header:<Titlebar />
+            */
+        }
     },
 
     DetailPage: {
@@ -28,8 +38,12 @@ const AppNavigator = createStackNavigator({
     }
 },
 {
+    // 全局配置 所有界面
     defaultNavigationOptions: ({navigation}) => ({
-        header: null // 不显示 标题栏
+        // 全局设置所有界面都 标题栏 高度
+        headerStyle:{
+            height:40,
+        }
     })
 });
 
