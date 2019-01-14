@@ -9,7 +9,7 @@ import {
     AsyncStorage
 } from "react-native";
 import TitleBar from "../../component/TitleBar";
-import Constant from '../../Constant'
+import appService from '../../api/AppService'
 
 class LoginPage extends  Component {
     constructor(props) {
@@ -28,26 +28,11 @@ class LoginPage extends  Component {
         if (this.state.isSending) {
             return;
         }
-        this.setState({isSending:true})
+        this.setState({isSending:true});
 
-        fetch(Constant.host + 'sendCode', {
-            method:'POST',
-            body:JSON.stringify({
-                phone:111111,
-            })
-        }).then(response => response.toJSON()).then(responseJson=> {
-            if (responseJson.status == 0) {
-                // 处理获得验证码成功的逻辑
-            } else {
-                console.log('失败')
-                Alert.alert('失败')
+        appService.sendCode().then((resp) => console.log(resp)).catch((error) => console.log('发生异常'));
 
-            }
-        }).catch(() => {
-            console.log('发生异常'); Alert.alert("异常");
-        });
-
-        let time = 10;
+        let time = 3;
         let timer = setInterval(() => {
             if (time == 0) {
                 clearInterval(timer);
